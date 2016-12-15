@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="spatial-error-model-sem">Spatial Error Model (SEM)</h1>
+<p>The SEM model is specified as, <br /><span class="math display"><em>y</em> = <em>X</em><em>β</em> + <em>u</em></span><br /> <br /><span class="math display"><em>u</em> = <em>λ</em><em>W</em><em>u</em> + <em>v</em></span><br /></p>
+<p>where <span class="math inline"><em>W</em></span> is a spatial weight matrix, <span class="math inline"><em>u</em></span> is a spatial error vector, and the error term <span class="math inline"><em>v</em> ∼ 𝒩(0, <em>σ</em><sup>2</sup>)</span>.</p>
+<p>The reduced form of the model is, <br /><span class="math display"><em>y</em> = <em>X</em><em>β</em> + (<em>I</em><sub><em>N</em></sub> − <em>λ</em><em>W</em>)<sup>−1</sup><em>v</em></span><br /></p>
+<p>So, the response <span class="math inline"><em>y</em></span> is modeled as, <br /><span class="math display"><em>y</em> ∼ 𝒩(<em>X</em><em>β</em>,  (<em>I</em><sub><em>N</em></sub> − <em>λ</em><em>W</em>)<sup>−1</sup> ⋅ (<em>I</em><sub><em>N</em></sub> − <em>λ</em><em>W</em><sup>⊤</sup>)<sup>−1</sup> ⋅ <em>σ</em><sup>2</sup>)</span><br /></p>
+<p>which is how I'm modeling it in Stan, but I'm taking the square root of the diagonal of the scale parameter stuff first since we do things in terms of standard deviation.</p>
+</body>
+</html>

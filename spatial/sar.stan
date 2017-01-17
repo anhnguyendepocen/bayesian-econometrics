@@ -18,8 +18,10 @@ parameters {
 transformed parameters {
   cov_matrix[N] Sigma;
   Sigma = ((I - lambda * W) * (I - lambda * W')) / sigma;
+  // Sigma = inverse(((I - lambda * W) * (I - lambda * W')) * sigma);
 }
 model {
+  // target += multi_normal_lpdf(y | inverse(I - lambda * W) * X*beta, Sigma);
   target += multi_normal_prec_lpdf(y | inverse(I - lambda * W) * X*beta, Sigma);
   target += beta_lpdf(lambda | 1, 2);  // prior on spatial autocorrelation
 }

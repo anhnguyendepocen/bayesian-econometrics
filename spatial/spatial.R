@@ -76,7 +76,7 @@ coef(errorsalm.chi)
 
 ### Simulated Data SAR
 
-N <- 25
+N <- 50
 W_bin <- matrix(rep(0, N * N), nrow = N)
 W_bin[lower.tri(W_bin)] <- rbinom(choose(N,2), 1, 0.5)
 W_bin <- W_bin + t(W_bin)

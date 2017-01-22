@@ -20,15 +20,14 @@ parameters {
 model {
   matrix[N,N] Sigma;
   matrix[N,N] weight_stuff;
-  // matrix[N,N] L;
   weight_stuff = I - rho * W;
   Sigma = tcrossprod(weight_stuff) /sigma;
-  // Sigma = inverse(tcrossprod(weight_stuff)) * sigma;
-  // L = cholesky_decompose(Sigma);
-  // target += multi_normal_cholesky_lpdf(y  | inverse(weight_stuff) * X * beta, L);
+
   target += multi_normal_prec_lpdf(y | inverse(weight_stuff) * X * beta, Sigma);
   target += cauchy_lpdf(rho | 0, 2);       // prior on spatial autocorrelation
   target += cauchy_lpdf(beta | 0, 3);     // priors on predictor parameters
   target += cauchy_lpdf(sigma | 0, 3);    // prior on variation
+  for (i in 1:N)
+    target += cauchy_lpdf(Sigma[i,] | 0, 3);    // prior on covariance matrix
 }
 

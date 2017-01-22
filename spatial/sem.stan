@@ -15,11 +15,15 @@ parameters {
   real<lower=0,upper=1> lambda;  // spatial correlation
   real<lower=0> sigma;
 }
-transformed parameters {
-  cov_matrix[N] Sigma;
-  Sigma = ((I - lambda * W) * (I - lambda * W')) / sigma;
-}
 model {
+  matrix[N,N] Sigma;
+  matrix[N,N] weight_stuff;
+  weight_stuff = I - lambda * W;
+  Sigma = tcrossprod(weight_stuff) / sigma;
+
   target += multi_normal_prec_lpdf(y | X*beta, Sigma);
-  target += beta_lpdf(lambda | 1, 2);  // prior on spatial correlation
+  target += cauchy_lpdf(lambda | 0, 2);  // prior on spatial correlation
+  target += cauchy_lpdf(beta | 0, 3);
+  target += cauchy_lpdf(sigma | 0, 3);
 }
+

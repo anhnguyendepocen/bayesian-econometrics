@@ -1,7 +1,7 @@
 # bayesian-econometrics
-Bayesian econometric models fit in rstan and rstanarm.
+Bayesian econometric [Stan](http://mc-stan.org) models fit in rstan and rstanarm.
 
-- [ ] Least Squares
+- [x] Least Squares
 - [ ] Weighted Least Squares
 - [ ] Generalized Least Squares
 - [ ] Logistic Regression
@@ -10,7 +10,8 @@ Bayesian econometric models fit in rstan and rstanarm.
 - [ ] Beta Regression
 - [ ] Panel Data - Fixed Effects
 - [ ] Panel Data - Random Effects
-- [ ] Spatial Autocorrelation
+- [x] Spatial Autocorrelation (SAR)
+- [x] Spatial Error (SEM)
 - [ ] Latent Class and Finite Mixture
 - [ ] Hierarchical
 - [ ] Multinomial Logit

@@ -4,7 +4,7 @@ Bayesian econometric [Stan](http://mc-stan.org) models fit in rstan and rstanarm
 - [x] Least Squares
 - [ ] Weighted Least Squares
 - [ ] Generalized Least Squares
-- [ ] Logistic Regression
+- [x] Logistic Regression
 - [ ] Instrumental Variables (IV)
 - [ ] Quantile Regression
 - [ ] Beta Regression
